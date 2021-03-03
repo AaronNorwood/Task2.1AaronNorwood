@@ -1,0 +1,83 @@
+int led1 = D6; 
+int led2 = D7;
+
+void dot(int led){
+    
+    digitalWrite(led, HIGH);
+    delay(100);
+    digitalWrite(led, LOW);
+    delay(100);
+}
+
+void dash(int led){
+    
+    digitalWrite(led, HIGH);
+    delay(300);
+    digitalWrite(led, LOW);
+    delay(100);
+}
+
+void letterSpace(){
+    
+    delay(300);
+}
+
+void wordSpace(){
+    
+    delay(700);
+}
+
+void endCode(int ledFlash, int ledOff){
+    int i = 0;
+    digitalWrite(ledOff, LOW);
+    
+    while(i < 5){
+        digitalWrite(ledFlash, HIGH);
+        delay(50);
+        digitalWrite(ledFlash, LOW);
+        delay(50);
+        i++;
+    }
+}
+
+void setup() {
+
+    pinMode(led1, OUTPUT);
+    pinMode(led2, OUTPUT);
+
+}
+
+
+void loop() {
+
+    //letter A
+    dot(led1);
+    dash(led1);
+    letterSpace();
+    //letter A
+    dot(led1);
+    dash(led1);
+    letterSpace();
+    //letter R
+    dot(led1);
+    dash(led1);
+    dot(led1);
+    letterSpace();
+    //letter O
+    dash(led1);
+    dash(led1);
+    dash(led1);
+    letterSpace();
+    //letter N
+    dash(led1);
+    dot(led1);
+    letterSpace();
+    
+    //led2 will flash rapdily to indicate end, led1 will turn off for duration
+    endCode(led2, led1);
+    
+    
+
+
+}
+
